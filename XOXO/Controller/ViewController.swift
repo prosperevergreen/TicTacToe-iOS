@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    
     @IBOutlet weak var gameLbl: UILabel!
     @IBOutlet var allXOXObuttons: [UIButton]!
     var firstPlayer: Bool?{
