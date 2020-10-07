@@ -18,34 +18,19 @@ import Foundation
 struct GameEngine{
     var btnArr = Array(repeating: "-", count: 9)
     var gameDetail = GameDetail()
-    var firstPlayer: Bool = true{
-        willSet{
-            if newValue {
-                gameDetail.playerIcon = "O"
-            }else{
-                gameDetail.playerIcon = "X"
-            }
-        }
-    }
+    var firstPlayer: Bool = true
+    
     
     mutating func check(LastPosition: Int) -> GameDetail {
         btnArr[LastPosition] = firstPlayer ? "O" : "X"
         let win = checkWin(playerIcon: [btnArr[LastPosition]], lastPosition: LastPosition)
         if win.count == 3 {
-            //            for button in allXOXObuttons {
-            //                button.isEnabled = false
-            //            }
             gameDetail.isWin = true
             gameDetail.gameLabel = "\(firstPlayer ? "player 1" : "player 2") won"
             gameDetail.winPosition = win
-            //            gameLbl.textColor = .red
         }else if checkDraw(){
             gameDetail.gameLabel = "Draw Game"
             gameDetail.isDraw = true
-            //            gameLbl.textColor = .red
-            //            for button in allXOXObuttons {
-            //                button.isEnabled = false
-            //            }
         }else{
             firstPlayer = !firstPlayer
             gameDetail.gameLabel = firstPlayer ? "Your Turn: Player 1" : "Your Turn: Player 2"
