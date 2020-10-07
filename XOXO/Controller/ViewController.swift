@@ -43,10 +43,13 @@ class ViewController: UIViewController {
             if gameUpdate.isWin {
                 for button in allXOXObuttons {
                     button.isEnabled = false
+                    if gameUpdate.winPosition!.contains(allXOXObuttons.firstIndex(of: button)!){
+                        button.setTitleColor(.red, for: .normal)
+                    }
                 }
                 gameLbl.textColor = .red
             }else if gameUpdate.isDraw{
-                gameLbl.text = "Draw Game"
+                gameLbl.text = gameUpdate.gameLabel
                 gameLbl.textColor = .red
                 for button in allXOXObuttons {
                     button.isEnabled = false
@@ -61,9 +64,10 @@ class ViewController: UIViewController {
         for btn in allXOXObuttons {
             btn.setTitle("-", for: .normal)
             btn.isEnabled = true
-            gameLbl.textColor = .label
-            gameEngine = GameEngine()
+            btn.setTitleColor(.label, for: .normal)
         }
+        gameLbl.textColor = .label
+        gameEngine = GameEngine()
     }
     
 }
