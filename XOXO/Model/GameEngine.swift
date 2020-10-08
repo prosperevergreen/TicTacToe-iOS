@@ -5,7 +5,7 @@
 //  Created by Prosper Evergreen on 07.10.2020.
 //
 struct GameDetail {
-    var gameLabel: String?
+    var gameLabel: String = "Your Turn: Player 1"
     var winPosition: [Int]?
     var playerIcon: String?
     var isWin: Bool = false

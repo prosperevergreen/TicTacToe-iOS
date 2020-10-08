@@ -13,16 +13,7 @@ class ViewController: UIViewController {
     private var gameEngine = GameEngine()
     @IBOutlet weak var gameLbl: UILabel!
     @IBOutlet var allXOXObuttons: [UIButton]!
-    var firstPlayer: Bool?{
-        willSet{
-            if newValue! {
-                gameLbl.text = "Your Turn: Player 1"
-            }else{
-                gameLbl.text = "Your Turn: Player 2"
-            }
-        }
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 //        gameEngine = GameEngine()
@@ -61,13 +52,14 @@ class ViewController: UIViewController {
     }
     
     @IBAction func resetBtnPressed(_ sender: UIBarButtonItem) {
+        gameEngine = GameEngine()
         for btn in allXOXObuttons {
             btn.setTitle("-", for: .normal)
             btn.isEnabled = true
             btn.setTitleColor(.label, for: .normal)
         }
         gameLbl.textColor = .label
-        gameEngine = GameEngine()
+        gameLbl.text = gameEngine.gameDetail.gameLabel
     }
     
 }
